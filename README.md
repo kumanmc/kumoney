@@ -6,3 +6,11 @@ Nunca mires atrás.
 
 1-Crear venv y activarlo
 2-Instalar Django
+3-Crear una API dentro de BACKEND
+    -Install binance connector -> pip install django binance-connector-python
+    (
+        Thanks:
+            https://github.com/binance/binance-connector-python
+            https://binance-docs.github.io/apidocs/spot/en/#enabling-accounts
+    )
+    -python manage.py startapp api
