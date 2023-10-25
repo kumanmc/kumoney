@@ -14,3 +14,6 @@ Nunca mires atrás.
             https://binance-docs.github.io/apidocs/spot/en/#enabling-accounts
     )
     -python manage.py startapp api
+    Mi primer api para coger la informaciom de mi cuenta es : http://localhost:8000/api/account/
+
+    TODO: Intentar trabajar con algun wrapper de binance
