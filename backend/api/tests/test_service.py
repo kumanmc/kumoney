@@ -21,7 +21,8 @@ class TestAPI(TestCase):
         # with it
 
         current_path = os.path.abspath(os.path.dirname(__file__))
-        test_file = os.path.join(current_path, 'tests/data/account.json')
+        test_file = os.path.join(current_path, './data/account.json')
+        print(test_file)
         with open(test_file, 'r') as file:
             mock_get_account.return_value = json.load(file)
 
