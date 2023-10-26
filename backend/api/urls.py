@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import account_info
+from .views import AccountInfoView
 
 urlpatterns = [
-    path('account/', account_info, name='account_info'),
+    path('account/', AccountInfoView.as_view(), name='account_info'),
 ]
