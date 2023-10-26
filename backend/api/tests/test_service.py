@@ -16,9 +16,7 @@ class TestAPI(TestCase):
         # data with @patch, so does not matter what we do processing information inside
         # because it overwrites the wole response.
 
-        # To test what we do with data we will test it in a differente way, creating a logic.py file
-        # where we will send the same data that we mocked and we will assert that we do what we want
-        # with it
+        # Logic is tested in test_logic_service.py
 
         current_path = os.path.abspath(os.path.dirname(__file__))
         test_file = os.path.join(current_path, './data/account.json')
