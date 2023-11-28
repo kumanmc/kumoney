@@ -1,0 +1,17 @@
+[
+    {
+      "id": 1,
+      "symbol": "aaaa",
+      "goal": 1.0
+    },
+    {
+      "id": 2,
+      "symbol": "bbbb",
+      "goal": 1000.0
+    },
+    {
+      "id": 3,
+      "symbol": "c",
+      "goal": 10.0
+    }
+  ]

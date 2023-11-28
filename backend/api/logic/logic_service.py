@@ -8,7 +8,7 @@ class LogicService:
 
         response['balances'] = [
             balance for balance in data['balances']
-            if float(balance["free"]) > 0.0 or float(balance['locked']) > 0.0
+            if float(balance["free"]) > 0.01 or float(balance['locked']) > 0.01
         ]
 
         return response

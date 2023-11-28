@@ -1,5 +1,5 @@
 from django.test import TestCase
-from ..logic.logic_service import LogicService
+from api.logic.logic_service import LogicService
 import os, json
 
 # Command: python manage.py test api.tests.test_logic_service
@@ -8,7 +8,7 @@ class TestLogicService(TestCase):
     def setUp(self):
         # Get file with data without filter
         current_path = os.path.abspath(os.path.dirname(__file__))
-        test_file = os.path.join(current_path, './data/account.json')
+        test_file = os.path.join(current_path, '../data/account.json')
         with open(test_file, 'r') as file:
             self.data = json.load(file)
 
@@ -17,5 +17,5 @@ class TestLogicService(TestCase):
     def test_get_account(self):
         self.assertEqual(len(self.data['balances']), 550)
         response = LogicService.get_account(self.data)
-        self.assertEqual(len(response['balances']), 9)
+        self.assertEqual(len(response['balances']), 5)
 
