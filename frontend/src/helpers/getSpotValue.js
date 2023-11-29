@@ -4,8 +4,7 @@ export function getSpotValue(balances, tickerData) {
     'crypto': 0.0,
   };
   for(let el of balances) {
-    if (
-      ['USDT', 'EUR'].includes(el.asset) ) {
+    if (['USDT', 'EUR'].includes(el.asset) ) {
       rtn[el.asset] = parseFloat(el.locked) + parseFloat(el.free)
     } else {
       const usdtPrice = tickerData[el.asset + 'USDT']

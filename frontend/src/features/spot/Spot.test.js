@@ -3,13 +3,15 @@ import { render, screen } from '@testing-library/react';
 import Container from 'react-bootstrap/Container';
 import Spot from './Spot'
 
-test('renders Spot with 3 values and no coin selected', () => {
+test('Spot with 3 values and no coin selected', () => {
 
   const data = {
     balances: [
       {asset: 'ADA', free: '2.17000', locked: '3.40500'},
       {asset: 'BTC', free: '10.07817000', locked: '5.00000000'},
       {asset: 'ETH', free: '70.07817000', locked: '89.00440000'},
+      {asset: 'UNKNOWN', free: '70.07817000', locked: '89.00440000'},
+      {asset: 'USDT', free: '2000.07817000', locked: '100.00'},
     ]
   }
   const coinSelected = null
