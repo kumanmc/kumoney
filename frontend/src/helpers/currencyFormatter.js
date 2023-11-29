@@ -6,10 +6,10 @@ export function formatCurrency(amount, currencyCode = 'USD') {
   return formattedAmount;
 }
 
-export function parseCurrency(formattedAmount) {
-  const value = formattedAmount.replace(/[^0-9.-]/g, '');
-  return parseFloat(value);
-}
+// export function parseCurrency(formattedAmount) {
+//   const value = formattedAmount.replace(/[^0-9.-]/g, '');
+//   return parseFloat(value);
+// }
 
 export function formatCryptoCurrency(value) {
   const formattedValue = Number(value).toFixed(4);

@@ -58,7 +58,8 @@ export default function TradingViewWidget({coinSelected}) {
   );
 
   return (
-    <div className='tradingview-widget-container' style={{ height: "100%", width: "100%" }}>
+    <div className='tradingview-widget-container' style={{ height: "100%", width: "100%" }}
+      data-testid='trading-view'>
       <div id='tradingview_29573' style={{ height: "calc(100% - 32px)", width: "100%" }} />
       <div className="tradingview-widget-copyright">
         <a href="https://es.tradingview.com/" rel="noopener nofollow" target="_blank"><span className="blue-text">Siga los mercados en TradingView</span></a>
