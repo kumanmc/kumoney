@@ -9,10 +9,7 @@ export default function Spot({data, coinSelected, setCoinSelected, tickerData}) 
   return (
     <>
       <Row>
-        <h1>SPOT</h1>
-      </Row>
-      <Row>
-        <Col>
+        <Col sm={4}>
           <CoinList
             title="Crypto"
             balances={data.balances}
@@ -20,7 +17,7 @@ export default function Spot({data, coinSelected, setCoinSelected, tickerData}) 
             tickerData={tickerData}
           />
         </Col>
-        <Col>
+        <Col sm={8}>
           { coinSelected &&
             <TradingViewWidget coinSelected={coinSelected}/>
           }

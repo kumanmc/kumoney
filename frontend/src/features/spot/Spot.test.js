@@ -4,7 +4,6 @@ import Container from 'react-bootstrap/Container';
 import Spot from './Spot'
 
 // jest.mock('../shared/TradingViewWidget');
-
 jest.mock('../shared/TradingViewWidget', () => {
   return jest.fn(({ coinSelected }) => (
     <div data-testid="trading-view">
@@ -13,26 +12,29 @@ jest.mock('../shared/TradingViewWidget', () => {
   ));
 });
 
+const data = {
+  balances: [
+    {asset: 'ADA', free: '2.17000', locked: '3.40500'},
+    {asset: 'BTC', free: '10.07817000', locked: '5.00000000'},
+    {asset: 'ETH', free: '70.07817000', locked: '89.00440000'},
+    {asset: 'UNKNOWN', free: '70.07817000', locked: '89.00440000'},
+    {asset: 'USDT', free: '2000.07817000', locked: '100.00'},
+  ]
+}
+
+const tickerData = {
+  'ADAUSDT': {symbol: 'ADA', price: '2.17000'},
+  'BTCUSDT': {symbol: 'BTC', price: '37000.17000'},
+  'ETHUSDT': {symbol: 'ETH', price: '2050.87000'},
+  'OTHER1USDT': {symbol: 'OTHER1', price: '2.18900'},
+  'OTHER2USDT': {symbol: 'OTHER2', price: '7.7000'},
+}
+
 test('Spot with 3 values and no coin selected', () => {
 
-  const data = {
-    balances: [
-      {asset: 'ADA', free: '2.17000', locked: '3.40500'},
-      {asset: 'BTC', free: '10.07817000', locked: '5.00000000'},
-      {asset: 'ETH', free: '70.07817000', locked: '89.00440000'},
-      {asset: 'UNKNOWN', free: '70.07817000', locked: '89.00440000'},
-      {asset: 'USDT', free: '2000.07817000', locked: '100.00'},
-    ]
-  }
   const coinSelected = null
   const setCoinSelected = () => console.log('Mock me!')
-  const tickerData = {
-    'ADAUSDT': {symbol: 'ADA', price: '2.17000'},
-    'BTCUSDT': {symbol: 'BTC', price: '37000.17000'},
-    'ETHUSDT': {symbol: 'ETH', price: '2050.87000'},
-    'OTHER1USDT': {symbol: 'OTHER1', price: '2.18900'},
-    'OTHER2USDT': {symbol: 'OTHER2', price: '7.7000'},
-  }
+
   render(
       <Container>
         <Spot 
@@ -43,10 +45,10 @@ test('Spot with 3 values and no coin selected', () => {
         />
     </Container>
   );
-  const coinList = screen.getByRole('table');
+  const coinList = document.getElementById('crypto-list');
   expect(coinList).toBeInTheDocument();
 
-  const itemsRow = coinList.querySelectorAll('tr.coin-item');
+  const itemsRow = coinList.querySelectorAll('button.coin-item');
   expect(itemsRow.length).toBe(3);
 
   expect(itemsRow[0]).toHaveTextContent('ADA');
@@ -61,24 +63,9 @@ test('Spot with 3 values and no coin selected', () => {
 
 test('Spot with 3 values and coin selected to see trading view', async () => {
 
-  const data = {
-    balances: [
-      {asset: 'ADA', free: '2.17000', locked: '3.40500'},
-      {asset: 'BTC', free: '10.07817000', locked: '5.00000000'},
-      {asset: 'ETH', free: '70.07817000', locked: '89.00440000'},
-      {asset: 'UNKNOWN', free: '70.07817000', locked: '89.00440000'},
-      {asset: 'USDT', free: '2000.07817000', locked: '100.00'},
-    ]
-  }
   const coinSelected = 'BTC'
   const setCoinSelected = () => console.log('setCoinSelected clicked!')
-  const tickerData = {
-    'ADAUSDT': {symbol: 'ADA', price: '2.17000'},
-    'BTCUSDT': {symbol: 'BTC', price: '37000.17000'},
-    'ETHUSDT': {symbol: 'ETH', price: '2050.87000'},
-    'OTHER1USDT': {symbol: 'OTHER1', price: '2.18900'},
-    'OTHER2USDT': {symbol: 'OTHER2', price: '7.7000'},
-  }
+
   render(
       <Container>
         <Spot 
@@ -89,10 +76,10 @@ test('Spot with 3 values and coin selected to see trading view', async () => {
         />
     </Container>
   );
-  const coinList = screen.getByRole('table');
+  const coinList = document.getElementById('crypto-list');
   expect(coinList).toBeInTheDocument();
 
-  const itemsRow = coinList.querySelectorAll('tr.coin-item');
+  const itemsRow = coinList.querySelectorAll('button.coin-item');
   expect(itemsRow.length).toBe(3);
   expect(itemsRow[0]).toHaveTextContent('ADA');
   expect(itemsRow[0]).toHaveTextContent('$12.10');
@@ -102,7 +89,7 @@ test('Spot with 3 values and coin selected to see trading view', async () => {
   expect(itemsRow[2]).toHaveTextContent('$326,257.67');
 
   const spyConsole = jest.spyOn(console, 'log');
-  fireEvent.click(itemsRow[0])
+  fireEvent.click(itemsRow[1])
   expect(spyConsole).toHaveBeenCalledWith('setCoinSelected clicked!');
   spyConsole.mockRestore();
 
@@ -111,7 +98,5 @@ test('Spot with 3 values and coin selected to see trading view', async () => {
     const tradingViewWidget = screen.queryByTestId('trading-view');
     within(tradingViewWidget).getByText('BTC')
   });
-
-
 
 });

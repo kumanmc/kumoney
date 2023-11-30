@@ -2,7 +2,9 @@ import React from 'react';
 import { formatCurrency, formatCryptoCurrency } from '../../helpers/currencyFormatter'
 import Accordion from 'react-bootstrap/Accordion';
 import Stack from 'react-bootstrap/Stack'
-import Table from 'react-bootstrap/Table';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { getSpotValue } from '../../helpers/getSpotValue'
@@ -22,16 +24,18 @@ export function CoinList({title, balances, setCoinSelected, tickerData}) {
             </Stack>
           </Accordion.Header>
           <Accordion.Body>
-            <Table className={"coin-list"}>
-            <thead>
-              <tr>
-                <th>Symbol</th>
-                <th>Price</th>
-                <th>Amount</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-              <tbody>
+            <ListGroup id="crypto-list">
+            <ListGroup.Item
+              className="coin-item"
+              variant="info"
+            >
+              <Row>
+                <Col sm={3}>Crypto</Col>
+                <Col sm={3}>Price</Col>
+                <Col sm={3}>Amount</Col>
+                <Col sm={3}>Total</Col>
+              </Row>
+            </ListGroup.Item>
               {
                 balances.sort((a, b) => a.asset.localeCompare(b.asset))
                 .map((item, index) => (
@@ -43,8 +47,7 @@ export function CoinList({title, balances, setCoinSelected, tickerData}) {
                   />
                 ))
               }
-              </tbody>
-            </Table>
+            </ListGroup>
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
@@ -58,24 +61,27 @@ function Coin ({item, tickerData, setCoinSelected}) {
   const usdPrice = tickerData[item.asset + 'USDT'];
 
   return (
-    <tr
+    
+    <ListGroup.Item
       className="coin-item"
-      direction="horizontal" 
-      gap={5} 
       onClick={() => setCoinSelected(item.asset)}
+      action variant="info"
       >
-        <td>{item.asset}</td>
-        <td>{formatCryptoCurrency(usdPrice.price)}</td>
-        <Amount item={item} />
-        <td>{
-        formatCurrency(
-          (
-            parseFloat(item.locked) + parseFloat(item.free)
-          ) * parseFloat(usdPrice.price)
-          )
-          }
-        </td>
-    </tr>
+        <Row>
+          <Col sm={3}>{item.asset}</Col>
+          <Col sm={3}>{formatCryptoCurrency(usdPrice.price)}</Col>
+          <Col sm={3}><Amount item={item} /></Col>
+          <Col sm={3}>
+          {
+            formatCurrency(
+              (
+                parseFloat(item.locked) + parseFloat(item.free)
+              ) * parseFloat(usdPrice.price)
+              )
+            }
+          </Col>
+        </Row>
+    </ListGroup.Item>
   );
 }
 
@@ -90,13 +96,13 @@ function Amount({item}) {
         <p className={'text-start'}>Locked: {parseFloat(item.locked)}</p>
       </Tooltip>
     }>
-      <td>
+      <Row>
         {
           (
             parseFloat(item.locked) + parseFloat(item.free)
           ).toFixed(2)
         }
-      </td>
+      </Row>
     </OverlayTrigger>
   );
 }
