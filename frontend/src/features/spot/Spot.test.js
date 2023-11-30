@@ -14,20 +14,20 @@ jest.mock('../shared/TradingViewWidget', () => {
 
 const data = {
   balances: [
-    {asset: 'ADA', free: '2.17000', locked: '3.40500'},
-    {asset: 'BTC', free: '10.07817000', locked: '5.00000000'},
-    {asset: 'ETH', free: '70.07817000', locked: '89.00440000'},
-    {asset: 'UNKNOWN', free: '70.07817000', locked: '89.00440000'},
-    {asset: 'USDT', free: '2000.07817000', locked: '100.00'},
+    { asset: 'ADA', free: '2.17000', locked: '3.40500' },
+    { asset: 'BTC', free: '10.07817000', locked: '5.00000000' },
+    { asset: 'ETH', free: '70.07817000', locked: '89.00440000' },
+    { asset: 'UNKNOWN', free: '70.07817000', locked: '89.00440000' },
+    { asset: 'USDT', free: '2000.07817000', locked: '100.00' },
   ]
 }
 
 const tickerData = {
-  'ADAUSDT': {symbol: 'ADA', price: '2.17000'},
-  'BTCUSDT': {symbol: 'BTC', price: '37000.17000'},
-  'ETHUSDT': {symbol: 'ETH', price: '2050.87000'},
-  'OTHER1USDT': {symbol: 'OTHER1', price: '2.18900'},
-  'OTHER2USDT': {symbol: 'OTHER2', price: '7.7000'},
+  'ADAUSDT': { symbol: 'ADA', price: '2.17000' },
+  'BTCUSDT': { symbol: 'BTC', price: '37000.17000' },
+  'ETHUSDT': { symbol: 'ETH', price: '2050.87000' },
+  'OTHER1USDT': { symbol: 'OTHER1', price: '2.18900' },
+  'OTHER2USDT': { symbol: 'OTHER2', price: '7.7000' },
 }
 
 test('Spot with 3 values and no coin selected', () => {
@@ -36,13 +36,13 @@ test('Spot with 3 values and no coin selected', () => {
   const setCoinSelected = () => console.log('Mock me!')
 
   render(
-      <Container>
-        <Spot 
-          data={data} 
-          coinSelected={coinSelected} 
-          setCoinSelected={setCoinSelected}  
-          tickerData={tickerData} 
-        />
+    <Container>
+      <Spot
+        data={data}
+        coinSelected={coinSelected}
+        setCoinSelected={setCoinSelected}
+        tickerData={tickerData}
+      />
     </Container>
   );
   const coinList = document.getElementById('crypto-list');
@@ -67,13 +67,13 @@ test('Spot with 3 values and coin selected to see trading view', async () => {
   const setCoinSelected = () => console.log('setCoinSelected clicked!')
 
   render(
-      <Container>
-        <Spot 
-          data={data} 
-          coinSelected={coinSelected} 
-          setCoinSelected={setCoinSelected}  
-          tickerData={tickerData} 
-        />
+    <Container>
+      <Spot
+        data={data}
+        coinSelected={coinSelected}
+        setCoinSelected={setCoinSelected}
+        tickerData={tickerData}
+      />
     </Container>
   );
   const coinList = document.getElementById('crypto-list');

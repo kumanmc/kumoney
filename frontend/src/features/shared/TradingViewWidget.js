@@ -10,7 +10,7 @@ let tvScriptLoadingPromise;
     ETH
     LOOM
 */
-export default function TradingViewWidget({coinSelected}) {
+export default function TradingViewWidget({ coinSelected }) {
 
   const onLoadScriptRef = useRef();
 

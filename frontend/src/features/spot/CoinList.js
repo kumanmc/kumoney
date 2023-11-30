@@ -9,22 +9,22 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { getSpotValue } from '../../helpers/getSpotValue'
 
-export function CoinList({title, balances, setCoinSelected, tickerData}) {
+export function CoinList({ title, balances, setCoinSelected, tickerData }) {
 
   const spotValue = getSpotValue(balances, tickerData);
 
   return (
-      <Accordion defaultActiveKey="0">
-        <Accordion.Item eventKey="0">
-          <Accordion.Header>
-            <Stack direction="horizontal" gap={2}>
-              <div className="p-2"><h3>{title}</h3></div>
-              <div className="p-2">Crypto:  {formatCurrency(spotValue.crypto)}</div>
-              <div className="p-2">USDT: {formatCurrency(spotValue.USDT)}</div>
-            </Stack>
-          </Accordion.Header>
-          <Accordion.Body>
-            <ListGroup id="crypto-list">
+    <Accordion defaultActiveKey="0">
+      <Accordion.Item eventKey="0">
+        <Accordion.Header>
+          <Stack direction="horizontal" gap={2}>
+            <div className="p-2"><h3>{title}</h3></div>
+            <div className="p-2">Crypto:  {formatCurrency(spotValue.crypto)}</div>
+            <div className="p-2">USDT: {formatCurrency(spotValue.USDT)}</div>
+          </Stack>
+        </Accordion.Header>
+        <Accordion.Body>
+          <ListGroup id="crypto-list">
             <ListGroup.Item
               className="coin-item"
               variant="info"
@@ -36,66 +36,66 @@ export function CoinList({title, balances, setCoinSelected, tickerData}) {
                 <Col sm={3}>Total</Col>
               </Row>
             </ListGroup.Item>
-              {
-                balances.sort((a, b) => a.asset.localeCompare(b.asset))
+            {
+              balances.sort((a, b) => a.asset.localeCompare(b.asset))
                 .map((item, index) => (
-                  <Coin 
+                  <Coin
                     key={index}
                     item={item}
                     tickerData={tickerData}
                     setCoinSelected={setCoinSelected}
                   />
                 ))
-              }
-            </ListGroup>
-          </Accordion.Body>
-        </Accordion.Item>
-      </Accordion>
+            }
+          </ListGroup>
+        </Accordion.Body>
+      </Accordion.Item>
+    </Accordion>
   );
 }
 
-function Coin ({item, tickerData, setCoinSelected}) {
+function Coin({ item, tickerData, setCoinSelected }) {
   if (!tickerData[item.asset + 'USDT']) {
     return null;
   }
   const usdPrice = tickerData[item.asset + 'USDT'];
 
   return (
-    
+
     <ListGroup.Item
       className="coin-item"
       onClick={() => setCoinSelected(item.asset)}
       action variant="info"
-      >
-        <Row>
-          <Col sm={3}>{item.asset}</Col>
-          <Col sm={3}>{formatCryptoCurrency(usdPrice.price)}</Col>
-          <Col sm={3}><Amount item={item} /></Col>
-          <Col sm={3}>
+    >
+      <Row>
+        <Col sm={3}>{item.asset}</Col>
+        <Col sm={3}>{formatCryptoCurrency(usdPrice.price)}</Col>
+        <Col sm={3}><Amount item={item} /></Col>
+        <Col sm={3}>
           {
             formatCurrency(
               (
                 parseFloat(item.locked) + parseFloat(item.free)
               ) * parseFloat(usdPrice.price)
-              )
-            }
-          </Col>
-        </Row>
+            )
+          }
+        </Col>
+      </Row>
     </ListGroup.Item>
   );
 }
 
-function Amount({item}) {
+function Amount({ item }) {
   return (
     <OverlayTrigger
       key={'top'}
       placement={'top'}
       overlay={
-      <Tooltip id={'amount-fre-lock'}  >
-        <p className={'text-start'}>Free: {parseFloat(item.free)}</p>
-        <p className={'text-start'}>Locked: {parseFloat(item.locked)}</p>
-      </Tooltip>
-    }>
+        <Tooltip id={'amount-fre-lock'}  >
+          <p className={'text-start'}>Free: {parseFloat(item.free)}</p>
+          <p className={'text-start'}>Locked: {parseFloat(item.locked)}</p>
+        </Tooltip>
+      }>
       <Row>
         {
           (
