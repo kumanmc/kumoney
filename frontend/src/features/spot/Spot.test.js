@@ -1,7 +1,17 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, within } from '@testing-library/react';
 import Container from 'react-bootstrap/Container';
 import Spot from './Spot'
+
+// jest.mock('../shared/TradingViewWidget');
+
+jest.mock('../shared/TradingViewWidget', () => {
+  return jest.fn(({ coinSelected }) => (
+    <div data-testid="trading-view">
+      {coinSelected}
+    </div>
+  ));
+});
 
 test('Spot with 3 values and no coin selected', () => {
 
@@ -95,4 +105,13 @@ test('Spot with 3 values and coin selected to see trading view', async () => {
   fireEvent.click(itemsRow[0])
   expect(spyConsole).toHaveBeenCalledWith('setCoinSelected clicked!');
   spyConsole.mockRestore();
+
+  //Check tradingview is rendered
+  await waitFor(() => {
+    const tradingViewWidget = screen.queryByTestId('trading-view');
+    within(tradingViewWidget).getByText('BTC')
+  });
+
+
+
 });
