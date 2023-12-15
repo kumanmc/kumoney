@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Spot from './Spot';
-import Loading from '../shared/Loading';
+import Loading from '../../shared/Loading';
 import { useMyContext } from '../../context/context';
 import { fetchData } from '../../api/api'
 

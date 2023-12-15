@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Spot from './Spot'
 
 // jest.mock('../shared/TradingViewWidget');
-jest.mock('../shared/TradingViewWidget', () => {
+jest.mock('../../shared/TradingViewWidget', () => {
   return jest.fn(({ coinSelected }) => (
     <div data-testid="trading-view">
       {coinSelected}
