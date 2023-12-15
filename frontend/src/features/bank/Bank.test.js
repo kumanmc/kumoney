@@ -13,13 +13,11 @@ import Bank from './Bank'
 // });
 
 const bankData = {
-  bank: [
-    { symbol: 'ADA', goal: '2.17000', current: '3.40500' },
-    { symbol: 'BTC', goal: '3', current: '5.00000000' },
-    { symbol: 'ETH', goal: '70.07817000', current: '89.00440000' },
-    { symbol: 'UNKNOWN', goal: '70.07817000', current: '89.00440000' },
-    { symbol: 'USDT', goal: '2000.07817000', current: '100.00' },
-  ]
+  'ADA': { symbol: 'ADA', goal: '2.17000', current: '3.40500' },
+  'BTC': { symbol: 'BTC', goal: '3', current: '5.00000000' },
+  'ETH': { symbol: 'ETH', goal: '70.07817000', current: '89.00440000' },
+  'UNKNOWN': { symbol: 'UNKNOWN', goal: '70.07817000', current: '89.00440000' },
+  'USDT': { symbol: 'USDT', goal: '2000.07817000', current: '100.00' },
 }
 
 const tickerData = {

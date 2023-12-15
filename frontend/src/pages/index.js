@@ -26,6 +26,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Container from 'react-bootstrap/Container';
 import {SpotManager} from '../features/spot/SpotManager'
+import {BankManager} from '../features/bank/BankManager'
 import { MyContextProvider } from '../context/context';
 import BinanceTicker from './api/BinanceTicker';
 
@@ -35,6 +36,7 @@ export default function Home() {
       <BinanceTicker />
       <Container>
         <SpotManager />
+        <BankManager />
       </Container>
     </MyContextProvider>
 
