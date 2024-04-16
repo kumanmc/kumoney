@@ -12,9 +12,19 @@ Nunca mires atrás.
 
     source venv/bin/activate
 
-### Desactivarlo
+### Crear archivo para tus keys
+Este fichero no se sube a github por seguridad. 
 
-    deactivate
+1- Crea un fichero '.env'
+
+2- Añade:
+
+    SECRET_KEY=sx&@at!q8%(0)&2rodet6r6sw$*9(i#^3h)lj-m@-79miw!0-z
+    DEBUG=true
+
+### Arrancar el servdor
+
+    python manage.py runserver
 
 ### Iniciar la api de python
    
@@ -29,9 +39,9 @@ Nunca mires atrás.
 
         python manage.py test api.tests.test_logic_service
 
-### Arrancar el servdor
+### Desactivar el env del terminal
 
-        python manage.py runserver
+    deactivate
 
 ### Path de la api
 http://127.0.0.1:8000//api/account/

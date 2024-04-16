@@ -35,9 +35,6 @@ fi
 # Actualizar pip
 pip install --upgrade pip
 
-# Cambiar al directorio del backend
-cd backend
-
 # Crear un entorno virtual
 python3 -m venv venv
 
@@ -48,7 +45,7 @@ source venv/bin/activate
 pip install django
 
 # Instalar otras dependencias del proyecto desde requirements.txt
-pip install -r requirements.txt
+pip install -r ./backend/requirements.txt
 
 # Desactivar el entorno virtual
 deactivate

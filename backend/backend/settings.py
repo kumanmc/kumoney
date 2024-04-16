@@ -24,8 +24,8 @@ env = environ.Env()
 environ.Env.read_env(env_file=os.path.join(BASE_DIR, '.env'))
 
 # BINANCE
-BINANCE_API_KEY = env('BINANCE_API_KEY')
-BINANCE_API_SECRET = env('BINANCE_API_SECRET')
+# BINANCE_API_KEY = env('BINANCE_API_KEY')
+# BINANCE_API_SECRET = env('BINANCE_API_SECRET')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
