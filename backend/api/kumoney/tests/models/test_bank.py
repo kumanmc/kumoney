@@ -1,5 +1,5 @@
 from django.test import TestCase
-from ...models import Bank
+from ....models import Bank
 
 class BankModelTests(TestCase):
     def test_create_bank(self):

@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import AccountInfoView
-from .views import GetBankView
+from .binance.views import AccountInfoView
+from .kumoney.views import GetBankView
 
 # One line for each endpoint
 # path(endPoint url, View object, method name in service)

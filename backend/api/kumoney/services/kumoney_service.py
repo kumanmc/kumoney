@@ -1,4 +1,4 @@
-from ..models import Bank
+from ...models import Bank
 from django.core.serializers import serialize
 
 class KumoneyService:
