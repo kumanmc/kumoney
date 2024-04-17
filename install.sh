@@ -49,3 +49,8 @@ pip install -r ./backend/requirements.txt
 
 # Desactivar el entorno virtual
 deactivate
+
+# Instalar dependencias frontend
+cd frontend
+npm install
+npm audit fix
