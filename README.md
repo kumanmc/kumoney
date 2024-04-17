@@ -7,28 +7,30 @@ Nunca mires atrás.
 ## Install project
 
     ./install.sh
-    
-### activar un enterno virtual para python
 
-    source venv/bin/activate
+## Ejecutar localmente
 
 ### Crear archivo para tus keys
 Este fichero no se sube a github por seguridad. 
 
 1- Crea un fichero '.env'
 
-2- Añade:
+2- Añade por ejemplo:
 
     SECRET_KEY=sx&@at!q8%(0)&2rodet6r6sw$*9(i#^3h)lj-m@-79miw!0-z
     DEBUG=true
+    
+### activar el enterno virtual para python en el path kumoney/
 
-### Arrancar el servdor
+    source venv/bin/activate
+
+### Arrancar el servidor
 
     python manage.py runserver
 
-### Iniciar la api de python
-   
-    python manage.py startapp api
+### Path de la api
+http://127.0.0.1:8000/api/
+
 
 ### Testear 
  - Ejecutar todos los tests de python
@@ -43,8 +45,14 @@ Este fichero no se sube a github por seguridad.
 
     deactivate
 
-### Path de la api
-http://127.0.0.1:8000//api/account/
+------------
+
+## Desarrollo
+
+### Cuando quieres crear una nueva app en backend se hace así:
+   
+    python manage.py startapp <nombre_app>
+------------
 
 ### Base de datos
 ------------
@@ -67,9 +75,9 @@ http://127.0.0.1:8000//api/account/
 
     python manage.py sqlmigrate meetings 001
 
-### Arrancar website
+<!-- ### Arrancar website
 
-    python manage.py startapp website
+    python manage.py startapp website -->
 
 ### SUPER USER DEV
 devuser
