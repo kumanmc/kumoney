@@ -11,10 +11,11 @@ function SpotManager() {
     coinSelected,
     setCoinSelected,
     tickerData,
+    updateError,
   } = useMyContext();
 
   useEffect(() => {
-    fetchData('http://localhost:8000/api/account/', setData);
+    fetchData('http://localhost:8000/api/account/', setData, updateError);
   }, [false]);
 
   if (!data || !data.balances) {
