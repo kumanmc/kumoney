@@ -52,5 +52,8 @@ deactivate
 
 # Instalar dependencias frontend
 cd frontend
+nvm install v18.17
+nvm use v18.17.0
+nvm alias default v18.17.0
 npm install
 npm audit fix
